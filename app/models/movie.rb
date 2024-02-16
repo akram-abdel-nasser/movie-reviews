@@ -9,4 +9,10 @@ class Movie < ApplicationRecord
 
   # VALIDATIONS #
   validates_uniqueness_of :name
+
+  def self.sorted_by_average_stars
+    joins(:reviews)
+      .group('movies.id')
+      .order('AVG(reviews.stars) DESC NULLS LAST')
+  end
 end
