@@ -4,4 +4,7 @@ class Actor < ApplicationRecord
   has_many :movies, through: :movie_actors
   has_many :movie_locations, dependent: :destroy
   has_many :locations, through: :movie_locations
+
+  # VALIDATIONS #
+  validates_uniqueness_of :name
 end
