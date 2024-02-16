@@ -4,6 +4,9 @@ class Movie < ApplicationRecord
   has_many :locations, through: :movie_locations
   has_many :movie_actors, dependent: :destroy
   has_many :actors, through: :movie_actors
+  has_many :reviews, dependent: :destroy
   belongs_to :director
-  accepts_nested_attributes_for :actors
+
+  # VALIDATIONS #
+  validates_uniqueness_of :name
 end
